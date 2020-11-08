@@ -18,7 +18,8 @@ client.on('message', async (message) => {
     else if (message.content === '!fetchReactions') {
         const msg = await message.channel.messages.fetch('774770590657282069');
         const allReactions = await fetchAll.reactions(msg, '🤔', {
-            userOnly: true,
+            userOnly: false,
+            botOnly: true,
         });
 
         console.log(allReactions.map(user => user.tag));

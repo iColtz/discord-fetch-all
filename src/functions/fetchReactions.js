@@ -1,5 +1,5 @@
 module.exports = async (message, reaction, options = {}) => {
-    const { userOnly = false } = options;
+    const { userOnly = false, botOnly = false } = options;
     let users = [];
     let lastID = '';
 
@@ -16,6 +16,7 @@ module.exports = async (message, reaction, options = {}) => {
 
         if (fetchedUsers.size === 0) {
             if (userOnly) users = users.filter(user => !user.bot);
+            if (botOnly) users = users.filter(user => user.bot);
             return users;
         }
         else {
