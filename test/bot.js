@@ -15,6 +15,12 @@ client.on('message', async (message) => {
 
         console.log(allMessages.map(msg => msg.content));
     }
+    else if (message.content === '!fetchReactions') {
+        const msg = await message.channel.messages.fetch('774770590657282069');
+        const allReactions = await fetchAll.reactions(msg, '🤔');
+
+        console.log(allReactions.map(user => user.tag));
+    }
 });
 
 client.login(require('./config.json').token);
