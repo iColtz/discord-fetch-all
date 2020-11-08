@@ -2,6 +2,7 @@ module.exports = async (channel, options = {}) => {
     const { 
             reverseArray = false,  
             userOnly = false,
+            botOnly = false,
         } = options;
     let messages = [];
     let lastID = '';
@@ -14,6 +15,7 @@ module.exports = async (channel, options = {}) => {
         if (fetchedMessages.size === 0) {
             if (reverseArray) messages = messages.reverse();
             if (userOnly) messages = messages.filter(msg => !msg.author.bot);
+            if (botOnly) messages = messages.filter(msg => msg.author.bot);
             return messages;
         }
 
