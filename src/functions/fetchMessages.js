@@ -1,10 +1,5 @@
 module.exports = async (channel, options = {}) => {
-    const { 
-            reverseArray = false,  
-            userOnly = false,
-            botOnly = false,
-            pinnedOnly = false,
-        } = options;
+    const { reverseArray = false, userOnly = false, botOnly = false, pinnedOnly = false } = options;
     let messages = [];
     let lastID = '';
 
