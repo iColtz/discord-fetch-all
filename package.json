@@ -1,0 +1,24 @@
+{
+  "name": "discord-fetch-all",
+  "version": "1.0.0",
+  "description": "Easily fetch all reactions/messages from a message or channel",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iColtz/discord-fetch-all.git"
+  },
+  "keywords": [
+    "discord",
+    "reactions",
+    "fetch"
+  ],
+  "author": "iColtz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iColtz/discord-fetch-all/issues"
+  },
+  "homepage": "https://github.com/iColtz/discord-fetch-all#readme"
+}
