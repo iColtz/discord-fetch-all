@@ -1,4 +1,7 @@
+const { Message } = require('discord.js');
+
 module.exports = async (message, reaction, options = {}) => {
+    if (!(message instanceof Message)) throw new Error('discord-fetch-all: channel parameter is not a instance of a discord channel.');
     const { userOnly = false, botOnly = false } = options;
     let users = [];
     let lastID = '';
