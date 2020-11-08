@@ -8,8 +8,9 @@ client.on('message', async (message) => {
     if (message.content === '!fetchMessages') {
         const allMessages = await fetchAll.messages(message.channel, {
             reverseArray: true,
+            userOnly: true,
         });
-        
+
         console.log(allMessages.map(msg => msg.content));
     }
 });
