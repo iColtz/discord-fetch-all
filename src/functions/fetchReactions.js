@@ -1,5 +1,6 @@
-module.exports = async (message, reaction) => {
-    const users = [];
+module.exports = async (message, reaction, options = {}) => {
+    const { userOnly = false } = options;
+    let users = [];
     let lastID = '';
 
     while (true) { // eslint-disable-line no-constant-condition
@@ -14,6 +15,7 @@ module.exports = async (message, reaction) => {
             : await fetchedUsers.users.fetch({ limit: 100 });
 
         if (fetchedUsers.size === 0) {
+            if (userOnly) users = users.filter(user => !user.bot);
             return users;
         }
         else {
