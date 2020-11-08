@@ -22,8 +22,10 @@
   },
   "homepage": "https://github.com/iColtz/discord-fetch-all#readme",
   "devDependencies": {
-    "discord.js": "^12.4.1",
     "eslint": "^7.13.0",
     "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "discord.js": "^12.4.1"
   }
 }
