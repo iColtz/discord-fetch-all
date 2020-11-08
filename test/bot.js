@@ -9,7 +9,8 @@ client.on('message', async (message) => {
         const allMessages = await fetchAll.messages(message.channel, {
             reverseArray: true,
             userOnly: false,
-            botOnly: true,
+            botOnly: false,
+            pinnedOnly: true,
         });
 
         console.log(allMessages.map(msg => msg.content));
