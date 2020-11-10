@@ -7,5 +7,3 @@ test/
 ./src/functions/fetchMessages.ts
 ./src/functions/fetchReactions.ts
 ./src/index.ts
-./test/config.ts 
-./test/config.js

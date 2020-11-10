@@ -1,4 +1,3 @@
 node_modules
 config.ts
 ./test/config.ts
-./test/config.js
