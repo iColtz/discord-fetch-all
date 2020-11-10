@@ -1,20 +1,20 @@
-const { Message } = require('discord.js');
+import { Message, User, MessageReaction, Collection } from 'discord.js';
 
-module.exports = async (message, reaction, options = {}) => {
+export default async (message: Message, reaction: String, options = { botOnly: false, userOnly: false }) => {
     if (!(message instanceof Message)) throw new Error('discord-fetch-all: channel parameter is not a instance of a discord channel.');
     if (typeof reaction !== 'string') throw new Error('discord-fetch-all: reaction parameter is not a string.');
-    const { userOnly = false, botOnly = false } = options;
-    let users = [];
+    const { userOnly, botOnly } = options;
+    let users: User[] = []
     let lastID = '';
 
-    while (true) { // eslint-disable-line no-constant-condition
-        var fetchedUsers = lastID !== '' // eslint-disable-line no-var
+    while (true) {
+        let fetchedUsers: (MessageReaction | undefined) | Collection<string, User> = lastID !== ''
                 ? (await message.reactions.cache.get(reaction))
                 : (await message.reactions.cache.get(reaction));
 
         if (!fetchedUsers) return [];
 
-        fetchedUsers = lastID !== '' 
+        fetchedUsers = lastID !== ''
             ? await fetchedUsers.users.fetch({ limit: 100, after: lastID }) 
             : await fetchedUsers.users.fetch({ limit: 100 });
 
