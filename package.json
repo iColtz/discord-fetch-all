@@ -1,6 +1,6 @@
 {
   "name": "discord-fetch-all",
-  "version": "2.0.5",
+  "version": "3.0.0",
   "description": "Easily fetch all reactions/messages from a message or channel",
   "main": "./src/index.ts",
   "scripts": {
