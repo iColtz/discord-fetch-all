@@ -4,3 +4,8 @@ node_modules
 .eslintrc.json
 test/
 .LICENCE
+./src/functions/fetchMessages.ts
+./src/functions/fetchReactions.ts
+./src/index.ts
+./test/config.ts 
+./test/config.js

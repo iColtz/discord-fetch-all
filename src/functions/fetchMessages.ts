@@ -4,12 +4,13 @@ export default async (channel: TextChannel, options = { reverseArray: false, use
     if (!(channel instanceof TextChannel)) throw new Error('discord-fetch-all: channel parameter is not a instance of a discord channel.');
     const { reverseArray, userOnly, botOnly, pinnedOnly } = options;
     let messages: Message[] = []
-    let lastID = '';
+    let lastID: string | undefined;
 
     while (true) {
-        var fetchedMessages = lastID !== ''
-            ? await channel.messages.fetch({ limit: 100, before: lastID })
-            : (fetchedMessages = await channel.messages.fetch({ limit: 100 }));
+        const fetchedMessages = await channel.messages.fetch({ 
+            limit: 100, 
+            ...(lastID && { before: lastID }) 
+          })
 
         if (fetchedMessages.size === 0) {
             if (reverseArray) messages = messages.reverse();
