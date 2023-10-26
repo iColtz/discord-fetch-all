@@ -1,15 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchMessages = void 0;
-async function fetchMessages(channel, options = {
-    reverseArray: false,
-    userOnly: false,
-    botOnly: false,
-    pinnedOnly: false,
-}) {
+async function fetchMessages(channel, options = {}) {
     if (!channel.isText())
-        throw new Error("discord-fetch-all: channel parameter is not a instance of a discord channel.");
-    const { reverseArray, userOnly, botOnly, pinnedOnly } = options;
+        throw new Error("discord-fetch-all: channel parameter is not a textual channel.");
     let messages = [];
     let lastID;
     while (true) {
@@ -17,18 +11,21 @@ async function fetchMessages(channel, options = {
             limit: 100,
             ...(lastID && { before: lastID }),
         });
+        if (options.onChunk)
+            options.onChunk(Array.from(fetchedMessages.values()));
         if (fetchedMessages.size === 0) {
-            if (reverseArray)
+            if (options.reverseArray)
                 messages = messages.reverse();
-            if (userOnly)
+            if (options.userOnly)
                 messages = messages.filter((msg) => !msg.author.bot);
-            if (botOnly)
+            if (options.botOnly)
                 messages = messages.filter((msg) => msg.author.bot);
-            if (pinnedOnly)
+            if (options.pinnedOnly)
                 messages = messages.filter((msg) => msg.pinned);
             return messages;
         }
-        messages = messages.concat(Array.from(fetchedMessages.values()));
+        if (options.useCache)
+            messages = messages.concat(Array.from(fetchedMessages.values()));
         lastID = fetchedMessages.lastKey();
     }
 }

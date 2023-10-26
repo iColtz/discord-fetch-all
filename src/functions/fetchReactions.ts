@@ -1,9 +1,14 @@
 import { Message, User, MessageReaction, Collection } from "discord.js";
 
+export interface FetchReactionsOptions {
+  botOnly?: boolean;
+  userOnly?: boolean;
+}
+
 export async function fetchReactions(
   message: Message,
   reaction: string,
-  options = { botOnly: false, userOnly: false }
+  options: FetchReactionsOptions = {},
 ) {
   let users: User[] = [];
   let lastID = "";

@@ -11,11 +11,11 @@ export interface FetchMessagesOptions {
 
 export async function fetchMessages(
   channel: AnyChannel,
-  options: FetchMessagesOptions = {}
+  options: FetchMessagesOptions = {},
 ) {
   if (!channel.isText())
     throw new Error(
-      "discord-fetch-all: channel parameter is not a textual channel."
+      "discord-fetch-all: channel parameter is not a textual channel.",
     );
 
   let messages: Message[] = [];
@@ -31,13 +31,14 @@ export async function fetchMessages(
 
     if (fetchedMessages.size === 0) {
       if (options.reverseArray) messages = messages.reverse();
-      if (options.userOnly) messages = messages.filter((msg) => !msg.author.bot);
+      if (options.userOnly)
+        messages = messages.filter((msg) => !msg.author.bot);
       if (options.botOnly) messages = messages.filter((msg) => msg.author.bot);
       if (options.pinnedOnly) messages = messages.filter((msg) => msg.pinned);
       return messages;
     }
 
-    if(options.useCache)
+    if (options.useCache)
       messages = messages.concat(Array.from(fetchedMessages.values()));
 
     lastID = fetchedMessages.lastKey();

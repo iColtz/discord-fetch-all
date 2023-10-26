@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "tsc --noEmit",
-    "prepublishOnly": "npm run test",
+    "prepublishOnly": "npm run build && npm run format",
     "format": "prettier --write \"src/**/*.ts\""
   },
   "repository": {

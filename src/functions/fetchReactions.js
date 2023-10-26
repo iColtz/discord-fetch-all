@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchReactions = void 0;
-async function fetchReactions(message, reaction, options = { botOnly: false, userOnly: false }) {
-    const { userOnly, botOnly } = options;
+async function fetchReactions(message, reaction, options = {}) {
     let users = [];
     let lastID = "";
     while (true) {
@@ -16,9 +15,9 @@ async function fetchReactions(message, reaction, options = { botOnly: false, use
                 ? await fetchedUsers.users.fetch({ limit: 100, after: lastID })
                 : await fetchedUsers.users.fetch({ limit: 100 });
         if (fetchedUsers.size === 0) {
-            if (userOnly)
+            if (options.userOnly)
                 users = users.filter((user) => !user.bot);
-            if (botOnly)
+            if (options.botOnly)
                 users = users.filter((user) => user.bot);
             return users;
         }
