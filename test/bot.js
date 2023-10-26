@@ -1,9 +1,9 @@
+"use strict";
 /**
  * @todo Make unit tests for the two functions using Jest to automate it.
  *   Use a .env instead of config.ts file with inside the bot token and the test channel id.
  *   Run automatically unit tests on GitHub Actions & in the prepublishOnly script in packageJSON.
  */
-
 // import { Client, Message, TextChannel } from 'discord.js';
 // import { messages, reactions } from '../src/index';
 // import { BOT_TOKEN } from './config';
