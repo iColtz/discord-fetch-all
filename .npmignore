@@ -7,3 +7,6 @@ test/
 ./src/functions/fetchMessages.ts
 ./src/functions/fetchReactions.ts
 ./src/index.ts
+.idea
+.vscode
+yarn-error.log
